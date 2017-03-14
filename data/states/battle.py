@@ -658,8 +658,9 @@ class Battle(tools._State):
         if self.enemy_index > len(self.enemy_list) - 1:
             self.enemy_index = 0
         enemy = self.enemy_list[self.enemy_index]
-        player_damage = enemy.calculate_hit(self.inventory['equipped armor'],
-                                            self.inventory)
+        #player_damage = enemy.calculate_hit(self.inventory['equipped armor'],
+        #                                    self.inventory)
+        player_damage = 0 
         self.damage_points.add(
             attackitems.HealthPoints(player_damage,
                                      self.player.rect.topright))
@@ -679,7 +680,8 @@ class Battle(tools._State):
         Transition battle into the enemy damaged state.
         """
         self.state = self.info_box.state = c.ENEMY_DAMAGED
-        enemy_damage = self.player.calculate_hit()
+        #enemy_damage = self.player.calculate_hit()
+        enemy_damage = 1000 
         self.damage_points.add(
             attackitems.HealthPoints(enemy_damage,
                                      self.player.attacked_enemy.rect.topright))
